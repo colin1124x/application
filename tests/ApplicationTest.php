@@ -100,7 +100,33 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             array(1, 2, 3, 4, 5, 6),
             array_merge($o1->{'args'}, $o2->{'args'}),
-            '合併檢查兩個物件實體參數');
+            '檢查兩個物件實體參數');
+    }
+
+    public function testArrayAccess()
+    {
+        $tester = $this;
+        $app = new \Rde\Application();
+        $app['x'] = function($c) use($tester, $app){
+            $tester->assertEquals($app, $c, '檢查IoC容器傳遞');
+
+            $o = new stdClass();
+            $o->{'test'} = 654321;
+
+            return $o;
+        };
+
+        $this->assertInstanceOf(
+            'stdClass',
+            $app['x'],
+            '測試用ArrayAccess取得'
+        );
+
+        $this->assertEquals(
+            654321,
+            $app['x']->{'test'},
+            '檢查物件屬性'
+        );
     }
 
     public function testBindShare()

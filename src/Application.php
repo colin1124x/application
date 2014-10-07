@@ -57,7 +57,7 @@ class Application implements \ArrayAccess
 
     public function offsetGet($k)
     {
-        return $this->collection[$k];
+        return $this->make($k);
     }
 
     public function offsetSet($k, $v)
