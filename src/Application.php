@@ -4,45 +4,29 @@ class Application implements \ArrayAccess
 {
     private $collection = array();
 
-    public function make($abstract, array $args = array())
+    public function make($abstract, $args = null)
     {
         if (isset($this->collection[$abstract])) {
 
             $concrete = $this->collection[$abstract];
 
-            return call_user_func($concrete, $this, $args);
+            return call_user_func($concrete, $this, (array) $args);
         }
     }
 
     public function bind($abstract, $concrete = null)
     {
-        if (null === $concrete) {
-            $concrete = $abstract;
-        }
-
-        if ( ! $concrete instanceof \Closure) {
-            $concrete = function() use($concrete){
-                return $concrete;
-            };
-        }
-
-        $this->collection[$abstract] = $concrete;
+        $this->collection[$abstract] = $this->getClosure($concrete, $abstract);
     }
 
     public function bindShared($abstract, $concrete = null)
     {
-        if (null === $concrete) {
-            $concrete = $abstract;
-        }
+        $this->bind($abstract, $this->share($concrete));
+    }
 
-        if ( ! $concrete instanceof \Closure) {
-            $concrete = function() use($concrete){
-                return $concrete;
-            };
-        }
-
-        $this->collection[$abstract] = function($c) use($concrete){
-
+    protected function share($concrete)
+    {
+        return function($c) use ($concrete) {
             static $object;
 
             if (null === $object) {
@@ -51,7 +35,19 @@ class Application implements \ArrayAccess
 
             return $object;
         };
+    }
 
+    protected function getClosure($concrete, $abstract)
+    {
+        if (null === $concrete) {
+            $concrete = $abstract;
+        }
+
+        return ($concrete instanceof \Closure) ?
+            $concrete :
+            function() use($concrete){
+                return $concrete;
+            };
     }
 
     public function offsetExists($k)
