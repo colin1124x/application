@@ -10,3 +10,6 @@ php:
 before_script:
   - composer self-update 
   - composer install
+
+notifications:
+  email: false
