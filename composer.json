@@ -1,5 +1,6 @@
 {
     "name": "rde/application",
+    "description": "IoC容器實作(練習,參考illuminate/container)",
     "authors": [
         {
             "name": "Colin",
