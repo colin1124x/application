@@ -1,6 +1,6 @@
 <?php namespace Rde;
 
-class Application implements \ArrayAccess
+class Container implements \ArrayAccess
 {
     private $collection = array();
 

@@ -1,5 +1,5 @@
 {
-    "name": "rde/application",
+    "name": "rde/container",
     "description": "IoC容器實作(練習,參考illuminate/container)",
     "license": "MIT",
     "authors": [

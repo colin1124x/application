@@ -1,10 +1,10 @@
 <?php
 
-class ApplicationTest extends PHPUnit_Framework_TestCase
+class ContainerTest extends PHPUnit_Framework_TestCase
 {
     public function testBindMakeString()
     {
-        $app = new Rde\Application();
+        $app = new Rde\Container();
 
         $concrete = 'ABC';
 
@@ -18,7 +18,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     public function testBindMakeWithoutConcrete()
     {
-        $app = new Rde\Application();
+        $app = new Rde\Container();
 
         $app->bind('x');
 
@@ -30,7 +30,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     public function testBindMakeObject()
     {
-        $app = new Rde\Application();
+        $app = new Rde\Container();
 
         $concrete = new stdClass();
         $concrete->{'test'} = time();
@@ -46,7 +46,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
     public function testBindMakeClosure()
     {
         $tester = $this;
-        $app = new Rde\Application();
+        $app = new Rde\Container();
 
         $concrete = function($c) use($tester, $app) {
 
@@ -75,7 +75,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     public function testMakeArguments()
     {
-        $app = new \Rde\Application();
+        $app = new \Rde\Container();
 
         $app->bind('x', function($c, $args){
                 $o = new stdClass();
@@ -106,7 +106,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
     public function testArrayAccess()
     {
         $tester = $this;
-        $app = new \Rde\Application();
+        $app = new \Rde\Container();
         $app['x'] = function($c) use($tester, $app){
             $tester->assertEquals($app, $c, '檢查IoC容器傳遞');
 
@@ -132,7 +132,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
     public function testBindShare()
     {
         $tester = $this;
-        $app = new \Rde\Application();
+        $app = new \Rde\Container();
 
         $app->bindShared('x', function($c, $args = null) use($tester, $app){
                 $tester->assertEquals($c, $app, '檢查Container本身有被傳入');
