@@ -8,4 +8,4 @@
 [![Latest Unstable Version](https://poser.pugx.org/rde/application/v/unstable.svg)](https://packagist.org/packages/rde/application) 
 [![License](https://poser.pugx.org/rde/application/license.svg)](https://packagist.org/packages/rde/application)
 
-IoC 容器練習
+IoC 容器練習 (參考自[![illuminate]](https://github.com/illuminate))
