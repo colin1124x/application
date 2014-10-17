@@ -7,3 +7,5 @@
 [![Total Downloads](https://poser.pugx.org/rde/application/downloads.svg)](https://packagist.org/packages/rde/application) 
 [![Latest Unstable Version](https://poser.pugx.org/rde/application/v/unstable.svg)](https://packagist.org/packages/rde/application) 
 [![License](https://poser.pugx.org/rde/application/license.svg)](https://packagist.org/packages/rde/application)
+
+IoC 容器練習
