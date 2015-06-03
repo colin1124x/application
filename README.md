@@ -7,5 +7,6 @@
 [![Total Downloads](https://poser.pugx.org/rde/container/downloads.svg)](https://packagist.org/packages/rde/container) 
 [![Latest Unstable Version](https://poser.pugx.org/rde/container/v/unstable.svg)](https://packagist.org/packages/rde/container) 
 [![License](https://poser.pugx.org/rde/container/license.svg)](https://packagist.org/packages/rde/container)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/349cd1da-b965-4db8-8ff7-6aa793156291/mini.png)](https://insight.sensiolabs.com/projects/349cd1da-b965-4db8-8ff7-6aa793156291)
 
 IoC 容器練習 (參考自[illuminate](https://github.com/illuminate))
